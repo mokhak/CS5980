@@ -5,7 +5,7 @@ from mugwump import Mugwump
 
 @pytest.fixture
 def my_mugwump():
-    mugwump = Mugwump()
+    mugwump = Mugwump(False)
 
     # artificially set max hitpoints
     mugwump.maxHitPoints = 20

@@ -11,7 +11,7 @@ from die import Die
 
 class Mugwump:
 
-    def __init__(self): # for homework 4 #, aiController:bool): # testable as well, range of hitpoints, and hitpoints == max hitpoints
+    def __init__(self, aiController:bool): # for homework 4 #, aiController:bool): # testable as well, range of hitpoints, and hitpoints == max hitpoints
         self.d100 = Die(100)
         self.d20 = Die(20)
         self.d10 = Die(10)
@@ -22,6 +22,8 @@ class Mugwump:
         # we do this here, instead of in a separate method
         self.maxHitPoints = self.d10.roll() + self.d10.roll() + self.d10.roll() + self.d10.roll() + self.d10.roll() + self.d10.roll()
         self.hitPoints = self.maxHitPoints  # start perfectly healthy
+        
+        self.aiController = aiController
 
     # add methods here
 
@@ -31,9 +33,10 @@ class Mugwump:
                a negative amount of damage if the Mugwump heals itself
      """
 
-    def attack(self) -> int:  # is this testable? yes, you could do some range tests with damage
+    def attack(self, attack_type:int) -> int:  # is this testable? yes, you could do some range tests with damage
         # get attack type from __ai()
-        attack_type = self.__ai()
+        if(self.aiController):
+            attack_type = self.__ai()
 
         # roll attack die
         # determine results of attack

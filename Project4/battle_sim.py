@@ -9,6 +9,7 @@
 from mugwump import Mugwump
 from warrior import Warrior
 from die import Die
+from character_prot import CharacterProt
 """
  BattleSim Driver for Battle Simulator 3000
  You may need to set the Python interpreter if you have an error along the top. Choose local, and it should find it
@@ -33,15 +34,34 @@ def main():  # not testable
     while keep_playing:
         # print the introduction and rules
         intro()
+        
+        print( "Would you like Mugwump to be AI or Player Controlled?" 
+            "\nEnter 1 for AI, 2 for Player")
+        
+        mugwump_play = input()
+        
+        print( "Would you like Warrior to be AI or Player Controlled?" 
+            "\nEnter 1 for AI, 2 for Player")
+        
+        warrior_play = input()
+        
 
         # initialize game
         # Initialize the Warrior and Mugwump classes, set the current victor to "none"
         # change to player1 and player2, we ask the user what is what
-        warrior = Warrior()
-        mugwump = Mugwump()
-
+        if(mugwump_play == "1"):
+            mugwump = Mugwump(True)
+        else:
+            mugwump = Mugwump(False)
+            
+        if(warrior_play == "1"):
+            warrior = Warrior(True)
+        else:
+            warrior = Warrior(False)
+            
         # if you decide to use a Protocol, asset isinstance right here
-
+        assert isinstance(warrior, CharacterProt)
+        assert isinstance(mugwump, CharacterProt)
         victor = "none"
 
         # while neither combatant has lost all of their hit points, report status and battle!
@@ -73,6 +93,7 @@ def intro():  # not testable
             "You also have your Shield of Light, which is not as strong as your sword, but is easier to deal "
             "damage with."
             "\nLet the epic battle begin!")
+    
 
 
 """
@@ -89,15 +110,27 @@ def battle(warrior, mugwump):  # not testable?
     if (cur_inititive == 1):
         # Warrior attacks and assigns the resulting damage to the mugwump
         print("The warrior attacks first!")
-        cur_attack = attackChoice()
+        
+        if(warrior.aiController == True):
+            cur_attack = 0
+        else:
+            cur_attack = attackChoice()
         damage = warrior.attack((cur_attack)) #calculate damage caused by warrior
 
         mugwump.takeDamage(damage) # apply damage to mugwump
         # Check if the Mugwump has been defeated
         if (mugwump.hitPoints <= 0):
             return "warrior"
+        
         # If not, Mugwump attacks!
-        damage = mugwump.attack()
+        
+        if(mugwump.aiController == True):
+            cur_attack = 0
+        else:
+            cur_attack = attackChoice()
+            
+        damage = mugwump.attack(cur_attack)
+        
         # the mugwump may have healed itself, so have to check
         if(damage > 0):
             warrior.takeDamage(damage)
@@ -109,7 +142,12 @@ def battle(warrior, mugwump):  # not testable?
     else: # mugwump attacks first!
         print("The mugwump attacks first!")
         # mugwump attacks and assigns the resulting damage to the warrior
-        damage = mugwump.attack()
+        if(mugwump.aiController == True):
+            cur_attack = 0
+        else:
+            cur_attack = attackChoice()
+            
+        damage = mugwump.attack(cur_attack)
         # the mugwump may have healed itself, so have to check
         if (damage > 0):
             warrior.takeDamage(damage)
@@ -119,7 +157,10 @@ def battle(warrior, mugwump):  # not testable?
         if (warrior.hitPoints == 0):
             return "mugwump"  # mugwump wins!
 
-        cur_attack = attackChoice()
+        if(mugwump.aiController == True):
+            cur_attack = 0
+        else:
+            cur_attack = attackChoice()
         damage = warrior.attack(cur_attack)  # calculate damage caused by warrior
 
         mugwump.takeDamage(damage)  # apply damage to mugwump
