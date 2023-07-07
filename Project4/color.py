@@ -1,3 +1,5 @@
+# Default values for test formatting when printing to console
+
 PURPLE = '\033[95m'
 CYAN = '\033[96m'
 DARKCYAN = '\033[36m'

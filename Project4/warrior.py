@@ -23,6 +23,7 @@ class Warrior:
         self.maxHitPoints = self.d10.roll() + self.d10.roll() + self.d10.roll() + self.d10.roll()
         self.hitPoints = self.maxHitPoints  # start perfectly healthy
         
+        # tells whether object is to be played with ai or not
         self.aiController = aiController
 
     # add methods here

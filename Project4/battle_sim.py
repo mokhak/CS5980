@@ -37,20 +37,19 @@ def main():  # not testable
         # print the introduction and rules
         intro()
         
+        # Getting user input on how they would like to play characters
         print( f"Would you like {color.BOLD}{color.UNDERLINE}{color.RED}Mugwump{color.END} to be AI or Player Controlled?" 
             "\nEnter 1 for AI, 2 for Player")
-        
         mugwump_play = input()
-        
         print( f"Would you like {color.BOLD}{color.BLUE}{color.UNDERLINE}Warrior{color.END} to be AI or Player Controlled?" 
             "\nEnter 1 for AI, 2 for Player")
-        
         warrior_play = input()
         
 
         # initialize game
         # Initialize the Warrior and Mugwump classes, set the current victor to "none"
         # change to player1 and player2, we ask the user what is what
+        # default value is set to play character as separate players
         if(mugwump_play == "1"):
             mugwump = Mugwump(True)
         else:

@@ -24,6 +24,7 @@ class Mugwump:
         self.maxHitPoints = self.d10.roll() + self.d10.roll() + self.d10.roll() + self.d10.roll() + self.d10.roll() + self.d10.roll()
         self.hitPoints = self.maxHitPoints  # start perfectly healthy
         
+        # sets whether to play character with ai or not
         self.aiController = aiController
 
     # add methods here
