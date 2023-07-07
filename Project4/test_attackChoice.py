@@ -1,7 +1,9 @@
 import battle_sim
-from pytest import MonkeyPatch
 
-def test_attackChoice1():
-    MonkeyPatch.setattr("builtins.input", lambda _:"1")
-    i = battle_sim.attackChoice()
-    assert int(i) == 1
+def test_attackChoice_1(monkeypatch):
+    monkeypatch.setattr("builtins.input", lambda _:"1")
+    assert int(battle_sim.attackChoice()) == 1
+    
+def test_attackChoice_2(monkeypatch):
+    monkeypatch.setattr("builtins.input", lambda _:"2")
+    assert int(battle_sim.attackChoice()) == 2
