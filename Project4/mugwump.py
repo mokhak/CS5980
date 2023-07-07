@@ -7,6 +7,7 @@
 """
 
 from die import Die
+import color
 
 
 class Mugwump:
@@ -36,7 +37,7 @@ class Mugwump:
     def attack(self, attack_type:int) -> int:  # is this testable? yes, you could do some range tests with damage
         # get attack type from __ai()
         if(self.aiController):
-            attack_type = self.__ai()
+            attack_type = self.ai()
 
         # roll attack die
         # determine results of attack
@@ -44,19 +45,19 @@ class Mugwump:
         if (attack_type == 1):
             if (self.d20.roll() >= 13):  # do we hit?
                 damage = self.d6.roll() + self.d6.roll()  # 2d6
-                print(f"Mugwump hits with claws for {damage}")
+                print(f"\n{color.GREEN}Mugwump hits with claws for {damage}{color.END}")
             else:
-                print(f"Mugwump misses with claws")
+                print(f"\n{color.RED}Mugwump misses with claws{color.END}")
 
         elif (attack_type == 2):
             if (self.d20.roll() >= 16):
                 damage = self.d6.roll() + self.d6.roll() + self.d6.roll()  # 3d6
-                print(f"Mugwump hits with fangs for {damage}")
+                print(f"\n{color.GREEN}Mugwump hits with fangs for {damage}{color.END}")
             else:
-                print(f"Mugwump misses with fangs")
+                print(f"\n{color.RED}Mugwump misses with fangs{color.END}")
         else:
             damage = -1 * self.d6.roll()
-            print(f"Mugwump heals for {-1*damage}")
+            print(f"\n{color.GREEN}Mugwump heals for {-1*damage}{color.END}")
 
         # return the damage
         return damage # range looks like -6 ... 0 .. 18. maybe test this 100 times
@@ -76,7 +77,7 @@ class Mugwump:
         else:
             self.hitPoints = 0
 
-    def __ai(self) -> int:  # __ means private # testable on range of output
+    def ai(self) -> int:  # __ means private # testable on range of output
         attack_type = 0
         roll = self.d20.roll()
         # 13 or greater on a d20

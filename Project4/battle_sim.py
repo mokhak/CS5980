@@ -10,6 +10,8 @@ from mugwump import Mugwump
 from warrior import Warrior
 from die import Die
 from character_prot import CharacterProt
+import color
+
 """
  BattleSim Driver for Battle Simulator 3000
  You may need to set the Python interpreter if you have an error along the top. Choose local, and it should find it
@@ -35,12 +37,12 @@ def main():  # not testable
         # print the introduction and rules
         intro()
         
-        print( "Would you like Mugwump to be AI or Player Controlled?" 
+        print( f"Would you like {color.BOLD}{color.UNDERLINE}{color.RED}Mugwump{color.END} to be AI or Player Controlled?" 
             "\nEnter 1 for AI, 2 for Player")
         
         mugwump_play = input()
         
-        print( "Would you like Warrior to be AI or Player Controlled?" 
+        print( f"Would you like {color.BOLD}{color.BLUE}{color.UNDERLINE}Warrior{color.END} to be AI or Player Controlled?" 
             "\nEnter 1 for AI, 2 for Player")
         
         warrior_play = input()
@@ -78,7 +80,7 @@ def main():  # not testable
 
 
     # Thank the user for playing your game
-    print("Thank you for playing Battle Simulator 3000!")
+    print(f"\n{color.BOLD}Thank you for playing Battle Simulator 3000!{color.END}")
 
 
 """
@@ -92,7 +94,7 @@ def intro():  # not testable
             "\nYou have your Trusty Sword, which deals decent damage, but can be tough to hit with sometimes. "
             "You also have your Shield of Light, which is not as strong as your sword, but is easier to deal "
             "damage with."
-            "\nLet the epic battle begin!")
+            "\nLet the epic battle begin!\n")
     
 
 
@@ -109,7 +111,7 @@ def battle(warrior, mugwump):  # not testable?
     # If the Warrior attacks first
     if (cur_inititive == 1):
         # Warrior attacks and assigns the resulting damage to the mugwump
-        print("The warrior attacks first!")
+        print("\nThe warrior attacks first!")
         
         if(warrior.aiController == True):
             cur_attack = 0
@@ -179,7 +181,7 @@ def battle(warrior, mugwump):  # not testable?
    @param mugwump The Evil Mugwump!
  """
 def report(warrior, mugwump):  # not testable
-    print(f"Warrior HP: {warrior.hitPoints}")
+    print(f"\nWarrior HP: {warrior.hitPoints}")
     print(f"Mugwump HP: {mugwump.hitPoints}")
 
 
@@ -228,10 +230,10 @@ def initiative() -> int: # return 1 for warrior, 2 for mugwump
  """
 def victory(victor):  # not testable (or at least we won't worry about testing it)
     if (victor == "warrior"):
-        print(  "The citizens cheer and invite you back to town for a feast"
-                " as thanks for saving their lives (again)!")
+        print(  f"\n{color.BOLD}The citizens cheer and invite you back to town for a feast"
+                f" as thanks for saving their lives (again)!{color.END}")
     else:
-        print("You loose to the Mugwump! He mocks you for how pathetically you fought")
+        print(f"\n{color.BOLD}You loose to the Mugwump! He mocks you for how pathetically you fought{color.END}")
 
 
 
@@ -241,7 +243,7 @@ def victory(victor):  # not testable (or at least we won't worry about testing i
    @return true if yes, false otherwise
  """
 def playAgain() -> bool:  # this should be testable, see https://stackoverflow.com/questions/35851323/how-to-test-a-function-with-input-call
-    choice = input("Would you like to play again (yes/no)?")
+    choice = input(f"\nWould you like to play again (yes/no)?")
     if (str.lower(choice) == "y" or str.lower(choice)  == "yes"):
         return True
     return False

@@ -6,6 +6,7 @@
     Created: FIXME
 """
 from die import Die
+import color
 class Warrior:
 
 
@@ -36,7 +37,7 @@ class Warrior:
         # unlike mugwump, warrior's attack type is passed
         # in as a parameter.
         if(self.aiController):
-            attack_type = self.__ai()
+            attack_type = self.ai()
 
         # roll attack die
         # determine results of attack
@@ -44,15 +45,15 @@ class Warrior:
         if (attack_type == 1): # trusty sword
             if (self.d20.roll() >= 12):  # do we hit?
                 damage = self.d8.roll() + self.d8.roll()  # 2d8 for damage
-                print(f"Warrior hit for {damage}")
+                print(f"\n{color.GREEN}Warrior hit for {damage}{color.END}")
             else:
-                print("Warrior miss!")
+                print(f"\n{color.RED}Warrior miss!{color.END}")
         else:  # (attack_type == 2): # shield of light
             if (self.d20.roll() >= 6): # do we hit
                 damage = self.d4.roll()  # 1d4 damage
-                print(f"Warrior hit for {damage}")
+                print(f"\n{color.GREEN}Warrior hit for {damage}{color.END}")
             else:
-                print("Warrior miss")
+                print(f"\n{color.RED}Warrior miss{color.END}")
 
 
         # return the damage
@@ -69,7 +70,7 @@ class Warrior:
         else:
             self.hitPoints = 0
             
-    def __ai(self) -> int:  # __ means private # testable on range of output
+    def ai(self) -> int:  # __ means private # testable on range of output
         attack_type = 0
         roll = self.d20.roll()
         # 13 or greater on a d20
