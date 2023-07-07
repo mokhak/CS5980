@@ -64,7 +64,7 @@ class Warrior:
      """
 
     def takeDamage(self, amount: int):
-        if (self.hitPoints >= amount):
+        if ((self.hitPoints >= amount)):
             self.hitPoints -= amount
         else:
             self.hitPoints = 0
