@@ -3,27 +3,27 @@ from calculator import Calculator
 
 
 
-def is_float(string):
+def isFloat(string):
     try:
         float(string)
         return True
     except ValueError:
         return False
 
-def check_operator(operator):
-    if(operator == ("+" or "-" or "X" or "/" or "%" or "^")):
+def checkOperator(operator):
+    if(operator == "+") or (operator == "-") or (operator == "/") or (operator == "X") or (operator == "%") or (operator == "^"):
         return True
     else:
         return False
 
-def error_check(number1, number2, operator):
-    if(is_float(number1) == False):
+def errorCheck(number1, number2, operator):
+    if(isFloat(number1) == False):
         print("Enter a numeric value for number 1!")
         return False
-    elif(is_float(number2) == False):
+    elif(isFloat(number2) == False):
         print("Enter a numeric value for Number 2!")
         return False
-    elif(check_operator(operator) == False):
+    elif(checkOperator(operator) == False):
         print("Enter a valid operator!")
         return False
     else:
@@ -40,7 +40,7 @@ if __name__ == '__main__':
     parser.add_argument("operator", help="Operation")
     parser.add_argument("number2", help="Number 2")
     args = parser.parse_args()
-    tmpError = error_check(args.number1, args.number2, args.operator)
+    tmpError = errorCheck(args.number1, args.number2, args.operator)
     
     if tmpError:
         new_calc.number1 = float(args.number1)
