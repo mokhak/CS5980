@@ -1,0 +1,8 @@
+pyproject.toml
+Project5/__init__.py
+Project5.egg-info/PKG-INFO
+Project5.egg-info/SOURCES.txt
+Project5.egg-info/dependency_links.txt
+Project5.egg-info/entry_points.txt
+Project5.egg-info/requires.txt
+Project5.egg-info/top_level.txt

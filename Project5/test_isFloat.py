@@ -1,4 +1,4 @@
-from main import isFloat
+from Project5.__init__ import isFloat
 
 def test_isFloat_TRUE():
     assert isFloat(2.5) == True

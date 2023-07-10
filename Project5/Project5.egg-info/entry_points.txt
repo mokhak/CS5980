@@ -1,0 +1,2 @@
+[console_scripts]
+Project5 = Project5:main

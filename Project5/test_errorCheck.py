@@ -1,4 +1,4 @@
-from main import errorCheck
+from Project5.__init__ import errorCheck
 
 def test_number1():
     assert errorCheck(1,2,"+") == True
