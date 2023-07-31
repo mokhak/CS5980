@@ -1,0 +1,11 @@
+Which data structure is better at insertion, which is better at retrieval of the nth (7000th in our case) number?
+The array data structure would be better at insertion and deletion than the linked lists. Linked lists have to first iterate to through the
+entire list to get to the end and insert another object or delete the last object. However, with the array the object locations in memory
+are store with the indexes so, it knows where it object is and can get to it directly rather than iterating through the whole data structure,
+therefore, arrays are much faster at insertion or deletion.
+
+Which would be better at deletion of the nth number? The 1st number?
+Both data structures will be similar at deletion of a particular number in the middle of the data structure. However, arrays will be faster
+to find the number that needs to be deleted. Once the number is deleted, both data structures will have to reorganize the data to move it
+back and fill the hole that was created after deletion. Both should be similar, although, arrays will be slightly faster because they do
+not have to iterate through the data structure initially. 
