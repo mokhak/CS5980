@@ -1,0 +1,16 @@
+The number of steps to add to the binary search tree is O(log n) where
+n is the number of node that you're trying to add to the tree.
+
+According to the insertion timing it seems like insertion with recursion
+takes a shorter amount of time and therefore is better for innsertion.
+
+Psuedo code for deleting a node from a tree:
+
+tree.find(node_to_be_deleted)
+if(root found has no children):
+    delete(node)
+elsif(root has children):
+    rearrange the node and children after deleting
+else
+    if key not found:
+        let user know
